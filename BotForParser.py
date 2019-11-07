@@ -16,7 +16,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['Update'])
 def send_welcome(message):
-  if message_id = admin:
+  if message_id == admin:
     ReloadCsv()
     ParserTest.main()
 
