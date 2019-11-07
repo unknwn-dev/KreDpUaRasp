@@ -1,17 +1,24 @@
 import csv
 import telebot
+import ParserTest
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
-
-
-with open('C:\\Users\\user\\Desktop\\project\\rasp.csv', 'r') as f:
-  reader = csv.reader(f)
-  raspisanye = list(reader)
+admin = "624303728"
+def ReloadCsv():
+  with open('C:\\Users\\user\\Desktop\\project\\rasp.csv', 'r') as f:
+    reader = csv.reader(f)
+    raspisanye = list(reader)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
 	bot.reply_to(message, "Привет , напиши мне номер группы что-бы посмотреть актуальное расписание(взято с сайта kre.dp.ua)")
+
+@bot.message_handler(commands=['Update'])
+def send_welcome(message):
+  if message_id = admin:
+    ReloadCsv()
+    ParserTest.main()
 
 @bot.message_handler(content_types = ["text"])
 def send_raspisanye(message):
