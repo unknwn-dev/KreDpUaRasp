@@ -103,7 +103,7 @@ def send_raspisanye(message):
     answ4 = str(raspisaniye[answInt-1]).replace("\'", "")
     answ3 = answ4.replace("|","|\n")
     answ2 = answ3.replace("[","")
-    answ = answ2.replace("]","")
+    answ = answ2.replace("]","") + "|"
     print(message.text + " " + message.chat.first_name)
     bot.reply_to(message,answ)
   except:
