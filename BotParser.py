@@ -3,7 +3,6 @@ import telebot
 import ParserTest
 import urllib.request
 from bs4 import BeautifulSoup
-import csv
 
 def get_html(url):
     response = urllib.request.urlopen(url)
@@ -41,7 +40,7 @@ def parse(html):
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
-raspis = []
+raspis = {}
   
 
 @bot.message_handler(commands=['start', 'help'])
