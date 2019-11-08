@@ -16,8 +16,8 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
-    ReloadCsv()
     ParserTest.main()
+    ReloadCsv()
 
 @bot.message_handler(content_types = ["text"])
 def send_raspisanye(message):
