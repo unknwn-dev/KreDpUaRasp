@@ -28,20 +28,18 @@ def parse(html):
         pr5 = predm[rowInt+4].text
 
         raspisaniye.append ({
-            'group':"Группа:"+group+"|",
-            'pr1':"0. "+pr1+"|",
-            'pr2':"1. "+pr2+"|",
-            'pr3':"2. "+pr3+"|",
-            'pr4':"3. "+pr4+"|",
-            'pr5':"4. "+pr5
+            "Группа:"+group+"|",
+            "0. "+pr1+"|",
+            "1. "+pr2+"|",
+            "2. "+pr3+"|",
+            "3. "+pr4+"|",
+            "4. "+pr5
         })
 
         rowInt += 5
-     print(str(raspisaniye[]))
+     
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
-
-raspis = {}
   
 
 @bot.message_handler(commands=['start', 'help'])
@@ -52,6 +50,7 @@ def send_welcome(message):
 def ResloaDAct(message):
     parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
     bot.reply_to(message, "Updated")
+    print(str(raspisaniye[]))
 
 
 @bot.message_handler(content_types = ["text"])
