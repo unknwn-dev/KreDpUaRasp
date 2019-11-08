@@ -14,9 +14,8 @@ def ReloadCsv():
 def send_welcome(message):
 	bot.reply_to(message, "Привет , напиши мне номер группы что-бы посмотреть актуальное расписание(взято с сайта kre.dp.ua)")
 
-@bot.message_handler(commands=['Update'])
+@bot.message_handler(commands=['update'])
 def send_welcome(message):
-  if message_id == admin:
     ReloadCsv()
     ParserTest.main()
 
