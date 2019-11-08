@@ -8,10 +8,12 @@ def get_html(url):
     response = urllib.request.urlopen(url)
     return response.read()
 
+raspisaniye = []
+
 def parse(html):
     soup = BeautifulSoup(html,'html.parser')
 
-    raspisaniye = []
+
 
     predm = soup.find_all('td',id='predm')
 
@@ -36,8 +38,6 @@ def parse(html):
 
         rowInt += 5
 
-    return raspisaniye
-
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
 raspis = {}
@@ -49,7 +49,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['update'])
 def ResloaDAct(message):
-    raspis = parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
+    parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
     bot.reply_to(message, "Updated")
 
 
