@@ -43,7 +43,7 @@ def save(projects, path):
             writer.writerow((project['group'],project['pr1'],project['pr2'],project['pr3'],project['pr4'],project['pr5']))
 
 def main():
-    save(parse(get_html("https://www.kre.dp.ua/education-process/timetable")),r'rasp.csv')
+    save(parse(get_html("https://www.kre.dp.ua/education-process/timetable")),'rasp.csv')
 
 if __name__ == "__main__":
     main()
