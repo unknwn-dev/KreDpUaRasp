@@ -41,8 +41,8 @@ def parse(html):
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
-def ReloadCsv():
-  parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
+def Reload():
+  raspis = parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -50,7 +50,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
-    ReloadCsv()
+    Reload()
 
 @bot.message_handler(content_types = ["text"])
 def send_raspisanye(message):
@@ -100,7 +100,7 @@ def send_raspisanye(message):
       answInt=41
     else:
       exit
-    answ4 = str(raspisanye[answInt-1]).replace("\'", "")
+    answ4 = str(raspis[answInt-1]).replace("\'", "")
     answ3 = answ4.replace(",","")
     answ2 = answ3.replace("[","")
     answ = answ2.replace("]","")
