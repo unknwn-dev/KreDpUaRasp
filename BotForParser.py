@@ -6,7 +6,7 @@ bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
 admin = "624303728"
 def ReloadCsv():
-  with open('C:\\Users\\user\\Desktop\\project\\rasp.csv', 'r') as f:
+  with open('rasp.csv', 'r') as f:
     reader = csv.reader(f)
     raspisanye = list(reader)
 
