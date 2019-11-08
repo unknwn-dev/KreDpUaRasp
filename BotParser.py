@@ -53,7 +53,7 @@ def send_welcome(message):
 def ResloaDAct(message):
     parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
     bot.reply_to(message, "Updated")
-    print(str(raspisaniye))
+    print(str(raspisaniye) + " | " + data)
 
 
 @bot.message_handler(content_types = ["text"])
