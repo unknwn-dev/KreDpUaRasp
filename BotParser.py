@@ -33,12 +33,12 @@ def parse(html):
         pr5 = predm[rowInt+4].text
 
         raspisaniye.append (
-            "   |Группа: "+group+" |\n"+
-            "0| "+pr1+"|\n"+
-            "1| "+pr2+"|\n"+
-            "2| "+pr3+"|\n"+
-            "3| "+pr4+"|\n"+
-            "4| "+pr5
+            "|№| Группа: "+group+" |\n"+
+            "|0| "+pr1+"|\n"+
+            "|1| "+pr2+"|\n"+
+            "|2| "+pr3+"|\n"+
+            "|3| "+pr4+"|\n"+
+            "|4| "+pr5
         )
 
         rowInt += 5
