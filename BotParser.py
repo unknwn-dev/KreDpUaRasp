@@ -101,7 +101,7 @@ def send_raspisanye(message):
     else:
       exit
     answ4 = str(raspisaniye[answInt-1]).replace("\'", "")
-    answ3 = answ4.replace(",","\n")
+    answ3 = answ4.replace("|","|\n")
     answ2 = answ3.replace("[","")
     answ = answ2.replace("]","")
     print(message.text + " " + message.chat.first_name)
