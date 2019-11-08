@@ -59,53 +59,54 @@ def send_raspisanye(message):
   answInt = 0
   try:
     if int(message.text) == 50:
-      answInt=23
+      answInt=12
     elif int(message.text) == 51:
       answInt=1
     elif int(message.text) == 52:
-      answInt=3
+      answInt=2
     elif int(message.text) == 53:
-      answInt=5
+      answInt=3
     elif int(message.text) == 54:
-      answInt=7
+      answInt=4
     elif int(message.text) == 55:
-      answInt=9
+      answInt=5
     elif int(message.text) == 56:
-      answInt=9
+      answInt=6
     elif int(message.text) == 45:
-      answInt=13
+      answInt=7
     elif int(message.text) == 46:
-      answInt=15
+      answInt=8
     elif int(message.text) == 47:
-      answInt=17
+      answInt=9
     elif int(message.text) == 48:
-      answInt=19
+      answInt=10
     elif int(message.text) == 49:
-      answInt=21
+      answInt=11
     elif int(message.text) == 38:
-      answInt=25
+      answInt=13
     elif int(message.text) == 39:
-      answInt=27
+      answInt=14
     elif int(message.text) == 41:
-      answInt=29
+      answInt=15
     elif int(message.text) == 42:
-      answInt=31
+      answInt=16
     elif int(message.text) == 44:
-      answInt=33
+      answInt=17
     elif int(message.text) == 32:
-      answInt=35
+      answInt=18
     elif int(message.text) == 33:
-      answInt=37
+      answInt=19
     elif int(message.text) == 36:
-      answInt=39
+      answInt=20
     elif int(message.text) == 37:
-      answInt=41
+      answInt=21
     else:
       exit
     answ4 = str(raspisaniye[answInt-1]).replace("\'", "")
-    answ3 = answ4.replace(",","")
+    answ3 = answ4.replace(",","\n")
     answ2 = answ3.replace("[","")
     answ = answ2.replace("]","")
+    print(message.text + " " + message.chat.first_name)
     bot.reply_to(message,answ)
   except:
     answ = "Error"
