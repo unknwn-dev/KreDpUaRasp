@@ -43,9 +43,10 @@ def parse(html):
 
         rowInt += 5
      
-
-bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
-  
+try:
+ bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
+except:
+ print("Wrong telegram bot key")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
