@@ -37,6 +37,7 @@ def parse(html):
         })
 
         rowInt += 5
+	print(raspisaniye)
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
@@ -101,7 +102,7 @@ def send_raspisanye(message):
       answInt=41
     else:
       exit
-    answ4 = str(raspis[answInt-1]).replace("\'", "")
+    answ4 = str(raspisaniye[answInt-1]).replace("\'", "")
     answ3 = answ4.replace(",","")
     answ2 = answ3.replace("[","")
     answ = answ2.replace("]","")
