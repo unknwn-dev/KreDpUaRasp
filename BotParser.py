@@ -10,6 +10,7 @@ def get_html(url):
 raspisaniye = []
 
 data = ""
+date = ""
 
 def parse(html):
     soup = BeautifulSoup(html,'html.parser')
