@@ -17,6 +17,8 @@ def parse(html):
     predm = soup.find_all('td',id='predm')
 
     rowInt=0
+    
+    data = soup.find('td',id='group')
 
     for row in soup.find_all('td',id='group')[7:]:
         group = row.text
@@ -100,7 +102,7 @@ def send_raspisanye(message):
       answInt=21
     else:
       exit
-    answ4 = str(raspisaniye[answInt-1]).replace("\'", "")
+    answ4 = data + "\n" + str(raspisaniye[answInt-1]).replace("\'", "")
     answ3 = answ4.replace("|","|\n")
     answ2 = answ3.replace("[","")
     answ = answ2.replace("]","") + "|"
