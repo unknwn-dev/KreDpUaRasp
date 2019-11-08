@@ -34,10 +34,10 @@ def parse(html):
 
         raspisaniye.append (
             "Группа:"+group+"|"+
-            "0| "+pr1+"|"+
-            "1| "+pr2+"|"+
-            "2| "+pr3+"|"+
-            "3| "+pr4+"|"+
+            "0| "+pr1+"|\n"+
+            "1| "+pr2+"|\n"+
+            "2| "+pr3+"|\n"+
+            "3| "+pr4+"|\n"+
             "4| "+pr5
         )
 
@@ -108,7 +108,7 @@ def send_raspisanye(message):
     else:
       exit
     answ4 = data + "\n" + str(raspisaniye[answInt-1]).replace("\'", "")
-    answ3 = answ4.replace("|","|\n")
+    answ3 = answ4.replace("","")
     answ2 = answ3.replace("[","")
     answ = answ2.replace("]","") + "|"
     print(message.text + " " + message.chat.first_name)
