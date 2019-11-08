@@ -41,16 +41,18 @@ def parse(html):
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
-def Reload():
-  raspis = parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
+raspis = []
+  
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
 	bot.reply_to(message, "Привет , напиши мне номер группы что-бы посмотреть актуальное расписание(взято с сайта kre.dp.ua)")
 
 @bot.message_handler(commands=['update'])
-def send_welcome(message):
-    Reload()
+def ResloaDAct(message):
+    raspis = parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
+    bot.reply_to(message, "Updated")
+
 
 @bot.message_handler(content_types = ["text"])
 def send_raspisanye(message):
