@@ -37,7 +37,7 @@ def parse(html):
         })
 
         rowInt += 5
-	print(raspisaniye)
+	print(str(raspisaniye))
 
 bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
 
