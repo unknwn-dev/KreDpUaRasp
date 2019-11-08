@@ -20,7 +20,8 @@ def parse(html):
 
     rowInt=0
     
-    data = soup.find('td',id='group').text
+    data = soup.find('td',id='group')
+    date = data.text
 
     for row in soup.find_all('td',id='group')[7:]:
         group = row.text
