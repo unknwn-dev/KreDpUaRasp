@@ -3,7 +3,7 @@ import telebot
 import urllib.request
 from bs4 import BeautifulSoup
 
-requests = 0
+requests  = 0
 
 def get_html(url):
     response = urllib.request.urlopen(url)
