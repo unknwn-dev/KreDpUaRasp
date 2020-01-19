@@ -60,10 +60,6 @@ def ResloaDAct(message):
     bot.reply_to(message, "Updated")
     print(str(date))
 
-@bot.message_handler(commands=['StatsByDay'])
-def Stats(message):
-    answ = "Запросов за этот день :" + str(requests)
-    bot.reply_to(message,answ)
 
 @bot.message_handler(content_types = ["text"])
 def send_raspisanye(message):
@@ -123,5 +119,11 @@ def send_raspisanye(message):
   except:
     answ = "Error"
     bot.reply_to(message,answ)
+	
+@bot.message_handler(commands=['StatsByDay'])
+def Stats(message):
+    answ = "Запросов за этот день :" + str(requests)
+    bot.reply_to(message,answ)
+
 
 bot.polling()
