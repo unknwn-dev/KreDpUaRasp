@@ -3,8 +3,6 @@ import telebot
 import urllib.request
 from bs4 import BeautifulSoup
 
-requests  = 0
-
 def get_html(url):
     response = urllib.request.urlopen(url)
     return response.read()
@@ -64,7 +62,6 @@ def ResloaDAct(message):
 @bot.message_handler(content_types = ["text"])
 def send_raspisanye(message):
   answInt = 0
-  requests = requests + 1
   try:
     if int(message.text) == 50:
       answInt=12
@@ -118,11 +115,6 @@ def send_raspisanye(message):
     bot.reply_to(message,answ)
   except:
     answ = "Error"
-    bot.reply_to(message,answ)
-	
-@bot.message_handler(commands=['StatsByDay'])
-def Stats(message):
-    answ = "Запросов за этот день :" + str(requests)
     bot.reply_to(message,answ)
 
 
