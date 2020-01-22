@@ -54,7 +54,11 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['update'])
 def ResloaDAct(message):
-    parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
+    raspisaniye = 0
+    try:
+    	parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
+    except:
+	bot.reply_to(message, traceback.format_exc())
     bot.reply_to(message, "Updated")
     print(str(date))
 
