@@ -68,48 +68,52 @@ def send_raspisanye(message):
   answInt = 0
   try:
     ptint(raspisaniye)
-    if int(message.text) == 50:
-      answInt=12
-    elif int(message.text) == 51:
+    if int(message.text) == 57:
       answInt=1
-    elif int(message.text) == 52:
+    elif int(message.text) == 58:
       answInt=2
-    elif int(message.text) == 53:
+    elif int(message.text) == 60:
       answInt=3
-    elif int(message.text) == 54:
+    elif int(message.text) == 61:
       answInt=4
-    elif int(message.text) == 55:
+    elif int(message.text) == 62:
       answInt=5
-    elif int(message.text) == 56:
+    elif int(message.text) == 51:
       answInt=6
-    elif int(message.text) == 45:
+    elif int(message.text) == 52:
       answInt=7
-    elif int(message.text) == 46:
+    elif int(message.text) == 53:
       answInt=8
-    elif int(message.text) == 47:
+    elif int(message.text) == 54:
       answInt=9
-    elif int(message.text) == 48:
+    elif int(message.text) == 55:
       answInt=10
-    elif int(message.text) == 49:
+    elif int(message.text) == 56:
       answInt=11
-    elif int(message.text) == 38:
+    elif int(message.text) == 45:
+      answInt=12
+    elif int(message.text) == 46:
       answInt=13
-    elif int(message.text) == 39:
+    elif int(message.text) == 47:
       answInt=14
-    elif int(message.text) == 41:
+    elif int(message.text) == 48:
       answInt=15
-    elif int(message.text) == 42:
+    elif int(message.text) == 49:
       answInt=16
-    elif int(message.text) == 44:
+    elif int(message.text) == 50:
       answInt=17
-    elif int(message.text) == 32:
+    elif int(message.text) == 38:
       answInt=18
-    elif int(message.text) == 33:
+    elif int(message.text) == 39:
       answInt=19
-    elif int(message.text) == 36:
+    elif int(message.text) == 40:
       answInt=20
-    elif int(message.text) == 37:
+    elif int(message.text) == 41:
       answInt=21
+    elif int(message.text) == 43:
+      answInt=22
+    elif int(message.text) == 44:
+      answInt=23
     else:
       exit
     answ4 = data + "\n" + str(raspisaniye[answInt-1]).replace("\'", "")
