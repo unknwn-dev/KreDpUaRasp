@@ -1,130 +1,41 @@
-import csv
-import telebot
-import urllib.request
-from bs4 import BeautifulSoup
+import ParseSite
+import TgBot
+import importlib
 
-def get_html(url):
-    response = urllib.request.urlopen(url)
-    return response.read()
+#Bot api, bot key set inside script
+bot = TgBot.bot
 
-raspisaniye = []
+#admin id for control
+admin = 624303728
 
-data = ""
-date = ""
-
-def parse(html):
-    soup = BeautifulSoup(html,'html.parser')
-
-
-
-    predm = soup.find_all('td',id='predm')
-
-    rowInt=0
-    
-    data = soup.find('td',id='group')
-    date = data.text
-
-    for row in soup.find_all('td',id='group')[7:]:
-        group = row.text
-        pr1 = predm[rowInt].text
-        pr2 = predm[rowInt+1].text
-        pr3 = predm[rowInt+2].text
-        pr4 = predm[rowInt+3].text
-        pr5 = predm[rowInt+4].text
-
-        raspisaniye.append (
-            "|№| Группа: "+group+" |\n"+
-            "|0| "+pr1+"|\n"+
-            "|1| "+pr2+"|\n"+
-            "|2| "+pr3+"|\n"+
-            "|3| "+pr4+"|\n"+
-            "|4| "+pr5
-        )
-
-        rowInt += 5
-     
-try:
- bot = telebot.TeleBot("1048261255:AAGzkKbwSSwRiqaww2cEOrYXB3oNejtnrV4")
-except:
- print("Wrong telegram bot key")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-	bot.reply_to(message, "Привет , напиши мне номер группы что-бы посмотреть актуальное расписание(взято с сайта kre.dp.ua)")
+	bot.reply_to(message, "Привет, напиши мне номер группы что-бы посмотреть актуальное расписание(взято с сайта kre.dp.ua)")
+
 
 @bot.message_handler(commands=['update'])
 def ResloaDAct(message):
-    raspisaniye = 0
-    try:
-    	parse(get_html("https://www.kre.dp.ua/education-process/timetable"))
-    except:
-        bot.reply_to(message, traceback.format_exc())
-    bot.reply_to(message, "Updated")
-    print(str(date))
+
+  if(message.from_user.id != admin):
+    return
+
+  ParseSite.Update(message, bot)
+
+@bot.message_handler(commands=['refreshModules'])
+def ReloadImports(message):
+
+  if(message.from_user.id != admin):
+    return
+
+  importlib.reload(ParseSite)
+  importlib.reload(TgBot)
+  ParseSite.reloadImports(message, bot)
 
 
 @bot.message_handler(content_types = ["text"])
-def send_raspisanye(message):
-  answInt = 0
-  try:
-    ptint(raspisaniye)
-    if int(message.text) == 57:
-      answInt=1
-    elif int(message.text) == 58:
-      answInt=2
-    elif int(message.text) == 60:
-      answInt=3
-    elif int(message.text) == 61:
-      answInt=4
-    elif int(message.text) == 62:
-      answInt=5
-    elif int(message.text) == 51:
-      answInt=6
-    elif int(message.text) == 52:
-      answInt=7
-    elif int(message.text) == 53:
-      answInt=8
-    elif int(message.text) == 54:
-      answInt=9
-    elif int(message.text) == 55:
-      answInt=10
-    elif int(message.text) == 56:
-      answInt=11
-    elif int(message.text) == 45:
-      answInt=12
-    elif int(message.text) == 46:
-      answInt=13
-    elif int(message.text) == 47:
-      answInt=14
-    elif int(message.text) == 48:
-      answInt=15
-    elif int(message.text) == 49:
-      answInt=16
-    elif int(message.text) == 50:
-      answInt=17
-    elif int(message.text) == 38:
-      answInt=18
-    elif int(message.text) == 39:
-      answInt=19
-    elif int(message.text) == 40:
-      answInt=20
-    elif int(message.text) == 41:
-      answInt=21
-    elif int(message.text) == 43:
-      answInt=22
-    elif int(message.text) == 44:
-      answInt=23
-    else:
-      exit
-    answ4 = data + "\n" + str(raspisaniye[answInt-1]).replace("\'", "")
-    answ3 = answ4.replace("","")
-    answ2 = answ3.replace("[","")
-    answ = answ2.replace("]","") + "|"
-    print(message.text + " " + message.chat.first_name)
-    bot.reply_to(message,answ)
-  except:
-    answ = "Error"
-    bot.reply_to(message,answ)
+def send_lessions(message):
+  ParseSite.GetLessions(message, bot)
 
 
 bot.polling()
