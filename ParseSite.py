@@ -3,6 +3,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import traceback
 import importlib
+import Debug
 
 GroupLessions = Group.GroupLessions
 
@@ -12,8 +13,6 @@ site = "https://www.kre.dp.ua/education-process/timetable"
 
 #Variables
 lessions = {}
-data = ""
-date = ""
 
 
 #Update local db
@@ -23,8 +22,19 @@ def Update(message, bot):
         pass
     except:
         bot.reply_to(message, traceback.format_exc())
+        Debug.LogError(traceback.format_exc())
         return
     bot.reply_to(message, "Updated")
+    Debug.Log("Updating lessions")
+
+def UpdateWithoutTg():
+    try:
+        parse(get_html(site))
+        pass
+    except:
+        Debug.LogError(traceback.format_exc())
+        return
+    Debug.Log("Updating lessions")    
 
 
 #Get html by url
@@ -73,18 +83,19 @@ def GetLessions(message, bot):
         for lession in lessions[mesg].Lessions:
             answ += "|" + str(i) + "| " + lession + " |" + "\n"
             i += 1
-
-        print(message.text + " " + message.chat.first_name)
         pass
     except:
-        answ = "Error "
+        answ = "Error GetLessions \n"
         answ += traceback.format_exc()
+        Debug.LogError(answ)
         pass
-
+    Debug.Log("GetLession for " + mesg + " by " + message.from_user.first_name )
     bot.reply_to(message,answ)
 
 #Called when we need to reload imports
 def reloadImports(message, bot):
     importlib.reload(Group)
+    importlib.reload(Debug)
     GroupLessions = Group.GroupLessions
     Update(message, bot)
+    Debug.Log("ReloadingImports")
