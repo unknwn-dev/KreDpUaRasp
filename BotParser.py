@@ -44,6 +44,12 @@ def ReloadImports(message):
   ParseSite.reloadImports(message, bot)
 
 
+#Clear logs
+@bot.message_handler(commands=['logsClear'])
+def ClearLog(message):
+  TgBot.Debug.ClearLogs()
+
+
 #TODO: Subscribe to lessions update
 @bot.message_handler(commands=['sub'])
 def Subscribe(message):

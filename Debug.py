@@ -37,14 +37,23 @@ def WriteLog(message, logType):
     logFile.write(json.dumps(Logs))
 
 def ReadLogsByType(logType):
+    logFile = open(logFileName, "r")
+    Logs = json.load(logFile)
     result = list()
     for log in Logs[logType]:
         result.append(log)
     return result
 
 def ReadAllLogs():
+    logFile = open(logFileName, "r")
+    Logs = json.load(logFile)
     result = list()
     for logType in Logs:
         for log in Logs[logType]:
             result.append(log)
     return result
+
+def ClearLogs():
+    logFile = open(logFileName, "+w")
+    Logs = {"Error" : [str()], "Log" : [str()], "Warning" : [str()]}
+    logFile.write(json.dumps(Logs))

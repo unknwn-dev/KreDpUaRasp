@@ -3,6 +3,8 @@ import json
 import Debug
 import ParseSite
 import traceback
+import schedule
+import time
 
 
 Subs = {int() : int()}
@@ -33,3 +35,15 @@ def SubscribeUser(message, bot):
     Debug.Log("User subscribed " + message.from_user.first_name + " on " + splitMsg[1])
     answ = "Вы подписались на рассылку расписания для групы " + splitMsg[1]
     bot.reply_to(message,answ)
+
+def SendLessionsToSubs(bot):
+    for sub in Subs:
+        bot.send_message(sub, ParseSite.lessions[Subs[sub]])
+
+def StartCheckLessions():
+    
+    schedule.every().day.at("23:33").do(ParseSite.UpdateWithoutTg)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
