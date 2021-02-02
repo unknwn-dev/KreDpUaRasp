@@ -14,8 +14,7 @@ try:
     Logs = json.load(logFile)
 except:
     print("LoadLogFileError " + traceback.format_exc())
-    open(logFileName, "w+")
-    logFile = open(logFileName, "+w")
+    json.dump(Logs, open(logFileName, "w+"))
 
 
 #Write log by type
@@ -31,8 +30,8 @@ def LogError(message):
 
 #Write log to log file
 def WriteLog(message, logType):
-    logFile = open(logFileName, "+w")
     Logs = json.load(open(logFileName, "r"))
+    logFile = open(logFileName, "+w")
     currentTime = datetime.now()
     Logs[logType].append("(" + logType + ")(" + currentTime.strftime("%D %H:%M:%S") + ") : " + message)
     logFile.write(json.dumps(Logs))
