@@ -18,7 +18,7 @@ admin = 624303728
 def send_welcome(message):
   answ = "Привет, напиши мне номер группы что-бы посмотреть актуальное расписание(взято с сайта kre.dp.ua)\n\n"
   answ += "Доступные команды : \n"
-  answ += "/sub <номер группы> - подписатся на рассылку раписания"
+  answ += "#НЕ РАБОТАЕТ!!!#/sub <номер группы> - подписатся на рассылку раписания"
   bot.reply_to(message, answ)
 
 
@@ -51,9 +51,9 @@ def ClearLog(message):
 
 
 #TODO: Subscribe to lessions update
-@bot.message_handler(commands=['sub'])
-def Subscribe(message):
-  Subscribes.SubscribeUser(message, bot)
+#@bot.message_handler(commands=['sub'])
+#def Subscribe(message):
+  #Subscribes.SubscribeUser(message, bot)
 
 @bot.message_handler(commands=['logs'])
 def Subscribe(message):
