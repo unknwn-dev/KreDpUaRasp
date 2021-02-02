@@ -22,4 +22,9 @@ def SendLogs(message, bot):
     else:
         for log in Debug.ReadAllLogs():
             answ += log + "\n"
-    bot.reply_to(message, answ)
+
+    if len(answ) > 4096:
+        for x in range(0, len(answ), 4096):
+            bot.send_message(message.chat.id, answ[x:x+4096])
+    else:
+        bot.send_message(message.chat.id, answ)
