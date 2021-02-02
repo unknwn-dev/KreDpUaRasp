@@ -32,6 +32,7 @@ def LogError(message):
 #Write log to log file
 def WriteLog(message, logType):
     logFile = open(logFileName, "+w")
+    Logs = json.load(logFile)
     currentTime = datetime.now()
     Logs[logType].append("(" + logType + ")(" + currentTime.strftime("%D %H:%M:%S") + ") : " + message)
     logFile.write(json.dumps(Logs))
@@ -54,6 +55,6 @@ def ReadAllLogs():
     return result
 
 def ClearLogs():
-    logFile = open(logFileName, "+w")
     Logs = {"Error" : [str()], "Log" : [str()], "Warning" : [str()]}
+    logFile = open(logFileName, "+w")
     logFile.write(json.dumps(Logs))
