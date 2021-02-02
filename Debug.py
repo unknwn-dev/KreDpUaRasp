@@ -32,7 +32,7 @@ def LogError(message):
 #Write log to log file
 def WriteLog(message, logType):
     logFile = open(logFileName, "+w")
-    Logs = json.load(logFile)
+    Logs = json.load(open(logFileName, "r"))
     currentTime = datetime.now()
     Logs[logType].append("(" + logType + ")(" + currentTime.strftime("%D %H:%M:%S") + ") : " + message)
     logFile.write(json.dumps(Logs))
