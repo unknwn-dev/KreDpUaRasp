@@ -15,7 +15,7 @@ def SendLogs(message, bot):
     logType = message.text.split(" ")
     answ = "Logs:\n"
 
-    if(logType[1] != "All"):
+    if(len(logType) > 1 and logType[1] != "All"):
         for log in Debug.ReadLogsByType(logType[1]):
             answ += log + "\n"
         pass
